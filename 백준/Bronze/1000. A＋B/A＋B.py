@@ -1,2 +1,2 @@
-num1, num2 = map(int,input().split())
-print(num1+num2)
+temp = list(map(int, input().split()))
+print(temp[0] + temp[1])
