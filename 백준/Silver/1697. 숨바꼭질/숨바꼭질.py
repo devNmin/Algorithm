@@ -1,6 +1,7 @@
+from collections import deque
 def bfs(s, e):
     # [1] queue, visited array create
-    q = []
+    q = deque([])
     v = [0] * 200001
 
     # [2] 초기 데이터 삽입, v[] 초기화화
@@ -8,7 +9,7 @@ def bfs(s, e):
     v[s] = 1
 
     while q:
-        c = q.pop(0)
+        c = q.popleft()
         if c == e:
             return v[e] - 1
         for n in (c - 1, c + 1, c * 2):
