@@ -1,18 +1,15 @@
-# 벌집
-
 N = int(input())
+r = 1
+s = 2
+l = 7
 
-if N == 1:
-    print("1")
-elif N <= 7:
-    print("2")
-else:
-    arr = list(range(8, 19 + 1))
-    cnt = 3
+while True:
+    if N == 1:
+        break
+    r += 1
+    if s <= N <= l:
+        break
+    s = l + 1
+    l = s + ((6 * r) - 1)
 
-    while True:
-        if N in arr:
-            print(cnt)
-            break
-        arr = list(range(arr[0] + 6 * (cnt - 1), (arr[-1] + 6 * cnt) + 1))
-        cnt += 1
+print(r)
