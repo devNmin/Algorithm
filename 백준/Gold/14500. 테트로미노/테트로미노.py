@@ -1,6 +1,8 @@
 # 14500 테트로미노
 def dfs(n, sm, tlst):
     global ans
+    if sm + (4 - n) * mx <= ans:
+        return
     if n == 4:
         ans = max(ans, sm)
         return
@@ -16,6 +18,7 @@ N, M = list(map(int, input().split()))
 arr = [list(map(int, input().split())) for _ in range(N)]
 v = [[0] * M for _ in range(N)]
 ans = 0
+mx = max(map(max,arr))
 for i in range(N):
     for j in range(M):
         v[i][j] = 1
