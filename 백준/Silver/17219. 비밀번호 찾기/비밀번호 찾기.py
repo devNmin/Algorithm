@@ -1,10 +1,12 @@
-N,M = list(map(int,input().split()))
+import sys
+
+N, M = list(map(int, sys.stdin.readline().split()))
 
 password_dict = {}
 for _ in range(N):
-    a,b = list(input().split())
+    a, b = list(sys.stdin.readline().split())
     password_dict[a] = b
 
 for _ in range(M):
-    a = input()
+    a = sys.stdin.readline().strip()
     print(password_dict[a])
