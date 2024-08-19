@@ -1,22 +1,27 @@
 #include <string>
 #include <vector>
 #include <algorithm>
+
 using namespace std;
 
-int solution(vector<vector<int>> targets)
-{
+int solution(vector<vector<int>> targets) {
     int answer = 0, idx = 0;
-    sort(targets.begin(), targets.end());//오름차순 정렬
-    while (idx < targets.size())
-    {//요격을 다할때까지
-        int end = targets[idx++][1];// 타겟의 e 설정
+    
+    // 타겟의 end 값을 기준으로 오름차순 정렬
+    sort(targets.begin(), targets.end(), [](const vector<int>& a, const vector<int>& b) {
+        return a[1] < b[1];
+    });
+    
+    while (idx < targets.size()) {
+        // 현재 타겟의 end 값을 기준으로 요격 시스템 설정
+        int end = targets[idx++][1];
         answer++;
-        while (idx < targets.size() && targets[idx][0] < end)
-        {// end 보다 해당 타겟의 s가 작다면 밀어준다.
-            // 해당 타깃이 end를 설정해 놓은 타겟보다 end가 작을 때 갱신
-            if (targets[idx][1] < end) end = targets[idx][1];
+        
+        // 겹치는 타겟들을 모두 건너뜀
+        while (idx < targets.size() && targets[idx][0] < end) {
             idx++;
         }
     }
+    
     return answer;
 }
